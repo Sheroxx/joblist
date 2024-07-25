@@ -1,0 +1,37 @@
+{
+  "Loading": "Yükleniyor...",
+  "Error": "Hata:",
+  "header": {
+    "loginBtn": "Giriş Yap",
+    "registerBtn": "Kayıt Ol"
+  },
+  "LoginPage": {
+    "login": "Giriş Yap",
+    "email": "E-posta",
+    "password": "Şifre"
+  },
+  "HomePage": {
+    "title": "Bulunan En İyi Pozisyon",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  "Footer": {
+    "title": "ACME",
+    "getStarted": "Başlamak için hazır mısınız?",
+    "privacyTerms": "© 2010 — 2024 Gizlilik — Şartlar"
+  },
+  "errors": {
+    "usernameRequired": "Kullanıcı adı gereklidir",
+    "passwordRequired": "Şifre gereklidir",
+    "invalidEmail": "Geçersiz e-posta adresi",
+    "emailRequired": "E-posta gereklidir",
+    "passwordMin": "Şifre en az 6 karakter olmalıdır",
+    "passwordsMustMatch": "Şifreler eşleşmelidir",
+    "confirmPasswordRequired": "Şifre onayı gereklidir"
+  },
+  "RegisterPage": {
+    "email": "E-posta",
+    "password": "Şifre",
+    "confirmPassword": "Şifreyi Onayla",
+    "register": "Kayıt Ol"
+  }
+}

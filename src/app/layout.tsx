@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import I18nProvider from "@/providers/I18nProvider";
+import ReduxProvider from "@/providers/ReduxProvider";
+import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +21,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ReduxProvider>
+          <I18nProvider>
+            <Header />
+            <ToastContainer/>
+            <main className="flex-grow flex flex-col items-center justify-center bg-gray-100">
+              {children}
+            </main>
+            <Footer />
+          </I18nProvider>
+        </ReduxProvider>
+      </body>
     </html>
   );
 }

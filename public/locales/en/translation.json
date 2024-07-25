@@ -1,0 +1,37 @@
+{
+  "Loading": "Loading...",
+  "Error": "Error:",
+  "header": {
+    "loginBtn": "Login",
+    "registerBtn": "Sign Up"
+  },
+  "LoginPage": {
+    "login": "Login",
+    "email": "Email",
+    "password": "Password"
+  },
+  "HomePage": {
+    "title": "Best Position Ever Found",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  "Footer": {
+    "title": "ACME",
+    "getStarted": "Ready to get started?",
+    "privacyTerms": "© 2010 — 2024 Privacy — Terms"
+  },
+  "errors": {
+    "usernameRequired": "Username is required",
+    "passwordRequired": "Password is required",
+    "invalidEmail": "Invalid email address",
+    "emailRequired": "Email is required",
+    "passwordMin": "Password must be at least 6 characters",
+    "passwordsMustMatch": "Passwords must match",
+    "confirmPasswordRequired": "Password confirmation is required"
+  },
+  "RegisterPage": {
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "register": "Register"
+  }
+}
