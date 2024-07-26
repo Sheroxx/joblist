@@ -6,7 +6,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { useRegisterUserMutation } from '@/store/services/api';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRegisterUserMutation } from '@/store/services/authService';
 
 const RegisterForm = () => {
   const { t } = useTranslation();
@@ -35,7 +36,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg">
       <h2 className="text-2xl font-bold text-center text-black">
         {t('RegisterPage.register')}
       </h2>

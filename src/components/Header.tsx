@@ -1,30 +1,31 @@
-'use client';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { FaBars } from 'react-icons/fa';
-import { IoClose } from 'react-icons/io5';
-import Modal from 'react-modal';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/store/store';
-import { clearUser } from '@/store/userSlice';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
+"use client";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { FaBars } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+import Modal from "react-modal";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@/store/store";
+import { clearUser, setUser } from "@/store/userSlice";
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
+import { useFetchUserProfileQuery } from "@/store/services/authService";
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    borderRadius: '24px',
-    width: '90%', 
-    maxWidth: '500px', 
-    height: 'auto',  
-    maxHeight: '80vh', 
-    padding: '50px'
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "24px",
+    width: "90%",
+    maxWidth: "500px",
+    height: "auto",
+    maxHeight: "80vh",
+    padding: "50px",
   },
 };
 
@@ -33,39 +34,50 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
-  const user = useSelector((state: RootState) => state.user.user);
+  const user = useSelector<RootState, any>(
+    (state: RootState) => state.user.user
+  );
   const dispatch = useDispatch();
+  const accessToken = useSelector((state: RootState) => state.user.accessToken);
 
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
   };
 
   const openLoginModal = () => {
-    setRegisterModalOpen(false); // Register modalını kapat
+    setRegisterModalOpen(false);
     setLoginModalOpen(true);
   };
 
   const openRegisterModal = () => {
-    setLoginModalOpen(false); // Login modalını kapat
+    setLoginModalOpen(false);
     setRegisterModalOpen(true);
   };
 
   const handleLogout = () => {
     dispatch(clearUser());
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
     window.location.href = "/";
   };
+
+  console.log("USER ACCESS", accessToken);
 
   return (
     <header className="flex items-center justify-between p-4 bg-white shadow-md">
       <div className="flex items-center">
         <div className="text-4xl font-bold text-black">ACME</div>
         <div className="flex lg:hidden ml-4 space-x-2">
-          <button onClick={() => changeLanguage('en')} className="px-2 py-1 border rounded bg-black text-white text-sm">
+          <button
+            onClick={() => changeLanguage("en")}
+            className="px-2 py-1 border rounded bg-black text-white text-sm"
+          >
             EN
           </button>
-          <button onClick={() => changeLanguage('tr')} className="px-2 py-1 border rounded bg-black text-white text-sm">
+          <button
+            onClick={() => changeLanguage("tr")}
+            className="px-2 py-1 border rounded bg-black text-white text-sm"
+          >
             TR
           </button>
         </div>
@@ -76,45 +88,69 @@ const Header = () => {
         </button>
       </div>
       <div className="hidden lg:flex items-center space-x-2">
-        {user ? (
+        {accessToken ? (
           <>
             <Link href={"/jobs"}>
               <button className="px-4 py-2 text-blue-500 hover:underline">
                 Job List
               </button>
             </Link>
-            <button onClick={handleLogout} className="px-4 py-2 text-blue-500 hover:underline">
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 text-blue-500 hover:underline"
+            >
               Logout
             </button>
             <div className="flex items-center space-x-2">
               <span className="text-black">{user.email}</span>
-              <img src={user.profileImage} alt="Profile" className="w-8 h-8 rounded-full" />
+              <img
+                src={user.profileImage}
+                alt="Profile"
+                className="w-8 h-8 rounded-full"
+              />
             </div>
           </>
         ) : (
           <>
-            <button onClick={openLoginModal} className="mr-4 px-4 py-2 border rounded text-black hover:bg-gray-200">
-              {t('header.loginBtn')}
+            <button
+              onClick={openLoginModal}
+              className="mr-4 px-4 py-2 border rounded text-black hover:bg-gray-200"
+            >
+              {t("header.loginBtn")}
             </button>
-            <button onClick={openRegisterModal} className="px-4 py-2 border rounded bg-black text-white hover:bg-gray-700">
-              {t('header.registerBtn')}
+            <button
+              onClick={openRegisterModal}
+              className="px-4 py-2 border rounded bg-black text-white hover:bg-gray-700"
+            >
+              {t("header.registerBtn")}
             </button>
           </>
         )}
-        <button onClick={() => changeLanguage('en')} className="ml-4 px-4 py-2 border rounded bg-black text-white">
+        <button
+          onClick={() => changeLanguage("en")}
+          className="ml-4 px-4 py-2 border rounded bg-black text-white"
+        >
           EN
         </button>
-        <button onClick={() => changeLanguage('tr')} className="ml-2 px-4 py-2 border rounded bg-black text-white">
+        <button
+          onClick={() => changeLanguage("tr")}
+          className="ml-2 px-4 py-2 border rounded bg-black text-white"
+        >
           TR
         </button>
       </div>
 
       {/* Side Menu */}
       <div
-        className={`fixed top-0 right-0 h-full bg-white shadow-md transform ${menuOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out lg:hidden`}
-        style={{ width: '250px' }}
+        className={`fixed top-0 right-0 h-full bg-white shadow-md transform ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out lg:hidden`}
+        style={{ width: "250px" }}
       >
-        <button onClick={() => setMenuOpen(false)} className="text-2xl absolute top-4 right-4">
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="text-2xl absolute top-4 right-4"
+        >
           <IoClose />
         </button>
         <div className="flex flex-col items-center mt-16 space-y-4">
@@ -125,21 +161,34 @@ const Header = () => {
                   Job List
                 </button>
               </Link>
-              <button onClick={handleLogout} className="px-4 py-2 text-blue-500 hover:underline w-3/4">
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 text-blue-500 hover:underline w-3/4"
+              >
                 Logout
               </button>
               <div className="flex items-center space-x-2 w-3/4 justify-center">
                 <span className="text-black">{user.email}</span>
-                <img src={user.profileImage} alt="Profile" className="w-8 h-8 rounded-full" />
+                <img
+                  src={user.profileImage}
+                  alt="Profile"
+                  className="w-8 h-8 rounded-full"
+                />
               </div>
             </>
           ) : (
             <>
-              <button onClick={openLoginModal} className="px-4 py-2 border rounded text-black hover:bg-gray-200 w-3/4">
-                {t('header.loginBtn')}
+              <button
+                onClick={openLoginModal}
+                className="px-4 py-2 border rounded text-black hover:bg-gray-200 w-3/4"
+              >
+                {t("header.loginBtn")}
               </button>
-              <button onClick={openRegisterModal} className="px-4 py-2 border rounded bg-black text-white hover:bg-gray-700 w-3/4">
-                {t('header.registerBtn')}
+              <button
+                onClick={openRegisterModal}
+                className="px-4 py-2 border rounded bg-black text-white hover:bg-gray-700 w-3/4"
+              >
+                {t("header.registerBtn")}
               </button>
             </>
           )}
@@ -154,7 +203,10 @@ const Header = () => {
         style={customStyles}
         overlayClassName="modal-overlay"
       >
-        <button onClick={() => setLoginModalOpen(false)} className="absolute top-4 right-4 text-2xl">
+        <button
+          onClick={() => setLoginModalOpen(false)}
+          className="absolute top-4 right-4 text-2xl"
+        >
           <IoClose />
         </button>
         <LoginForm />
@@ -168,7 +220,10 @@ const Header = () => {
         style={customStyles}
         overlayClassName="modal-overlay"
       >
-        <button onClick={() => setRegisterModalOpen(false)} className="absolute top-4 right-4 text-2xl">
+        <button
+          onClick={() => setRegisterModalOpen(false)}
+          className="absolute top-4 right-4 text-2xl"
+        >
           <IoClose />
         </button>
         <RegisterForm />

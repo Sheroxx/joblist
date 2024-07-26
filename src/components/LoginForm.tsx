@@ -1,28 +1,40 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { useTranslation } from 'react-i18next';
-import { useGetUserLoginMutation } from '@/store/services/api';
+import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useTranslation } from "react-i18next";
+import { useGetUserLoginMutation } from "@/store/services/authService";
+import { useAuth } from "@/providers/AuthProvider";
 
 const LoginForm = () => {
   const { t } = useTranslation();
+  const { login }:any= useAuth();
 
   const schema = yup.object().shape({
     email: yup.string().required(t("errors.usernameRequired")),
     password: yup.string().required(t("errors.passwordRequired")),
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
   const [getUserLogin, { isLoading, error }] = useGetUserLoginMutation();
 
   const onSubmit = async (data: any) => {
-    await getUserLogin(data);
+    try {
+      const response = await getUserLogin(data).unwrap();
+      console.log('USER LOGIN', response.user);
+      login(response.accessToken, response);
+    } catch (err) {
+      console.error("Failed to login", err);
+    }
   };
 
   return (

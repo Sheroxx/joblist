@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import I18nProvider from "@/providers/I18nProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
 import { ToastContainer } from 'react-toastify';
+import { AuthProvider } from "@/providers/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
+        <AuthProvider>
           <I18nProvider>
             <Header />
             <ToastContainer/>
@@ -31,6 +33,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </I18nProvider>
+          </AuthProvider>
         </ReduxProvider>
       </body>
     </html>
