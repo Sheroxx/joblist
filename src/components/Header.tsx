@@ -10,6 +10,7 @@ import { RootState } from "@/store/store";
 import { clearUser, setUser } from "@/store/userSlice";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import Image from "next/image";
 
 const customStyles = {
   content: {
@@ -103,10 +104,12 @@ const Header = () => {
             </button>
             <div className="flex items-center space-x-2">
               <span className="text-black">{user.email}</span>
-              <img
+              <Image
                 src={user.profileImage}
                 alt="Profile"
                 className="w-[50px] h-[50px] rounded-full"
+                width={100}
+                height={100}
               />
             </div>
           </>
@@ -169,10 +172,12 @@ const Header = () => {
               </button>
               <div className="flex items-center space-x-2 w-3/4 justify-center">
                 <span className="text-black">{user.email}</span>
-                <img
+                <Image
                   src={user.profileImage}
                   alt="Profile"
                   className="w-8 h-8 rounded-full"
+                  width={100}
+                  height={100}
                 />
               </div>
             </>

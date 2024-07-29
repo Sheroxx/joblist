@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import { FaBriefcase, FaCheckCircle } from "react-icons/fa";
 import JobDetailModal from "./JobDetailModal";

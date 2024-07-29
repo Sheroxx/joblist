@@ -9,6 +9,7 @@ import axios from "axios";
 import { setApplyJobs } from "@/store/userSlice";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Job {
   id: string;
@@ -76,7 +77,7 @@ const AppliedList: React.FC = () => {
   return (
     <>
       <div className="text-center mb-4">
-        <img src={user?.profileImage} alt="Profile" className="rounded-full w-20 h-20 mx-auto" />
+        <Image src={user?.profileImage} alt="Profile" className="rounded-full w-20 h-20 mx-auto" width={100} height={100}/>
         <div className="mt-2">{user?.email}</div>
       </div>
       <div className="text-lg font-bold mb-4 text-center">{t("Applied Jobs")}</div>

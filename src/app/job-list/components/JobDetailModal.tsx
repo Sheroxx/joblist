@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { useGetJobDetailQuery, useApplyJobMutation } from "@/store/services/apiService";
