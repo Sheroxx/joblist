@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Shft Frontend Ödevi
 
-## Getting Started
+Bu proje, Shft yazılım şirketi tarafından verilen bir frontend ödevidir. Bu projede, modern web teknolojilerini kullanarak kullanıcı dostu bir arayüz geliştirilmiştir.
 
-First, run the development server:
+## Proje Hakkında
 
-```bash
+Bu proje, iş ilanlarının listelendiği ve kullanıcıların bu ilanlara başvurabildiği bir platformu içerir. Projede kullanılan başlıca teknolojiler ve araçlar şunlardır:
+
+- **React.js**: Kullanıcı arayüzünü oluşturmak için kullanılan JavaScript kütüphanesi.
+- **TypeScript**: JavaScript üzerine geliştirilen, statik tip kontrolü sağlayan bir dil.
+- **Next.js**: React uygulamaları için sunucu tarafı işleme ve statik site üretimi yapan bir çerçeve.
+- **Tailwind CSS**: Hızlı ve verimli stil oluşturmak için kullanılan bir CSS çerçevesi.
+- **Redux**: Uygulama durumu yönetimi için kullanılan bir kütüphane.
+- **Framer Motion**: Animasyonlar ve geçişler için kullanılan bir kütüphane.
+
+## Kurulum
+
+Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
+
+1. **Depoyu klonlayın:**
+
+   ```sh
+   git clone https://github.com/Sheroxx/shft-frontend-odev.git
+   cd shft-frontend-odev
+Gerekli paketleri yükleyin:
+
+sh
+Kodu kopyala
+npm install
+Çalıştırın:
+
+sh
+Kodu kopyala
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Proje yerel olarak http://localhost:3000 adresinde çalışacaktır.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Özellikler
+Kullanıcı Girişi ve Kayıt: Kullanıcılar e-posta ve şifre ile giriş yapabilir veya yeni bir hesap oluşturabilirler.
+İş İlanları: Kullanıcılar mevcut iş ilanlarını görüntüleyebilir ve bu ilanlara başvurabilirler.
+Başvurulan İşler: Kullanıcılar başvurdukları işleri görüntüleyebilir ve başvurularını geri çekebilirler.
+Animasyonlar: Framer Motion kullanılarak sayfa ve bileşen geçişlerinde animasyonlar eklenmiştir.
+Partikül Arka Plan: Ana sayfada react-tsparticles kullanılarak partikül animasyonu eklenmiştir.
+Kullanılan Teknolojiler
+React.js
+TypeScript
+Next.js
+Tailwind CSS
+Redux
+Framer Motion
+Axios
+React Hook Form
+Yup
+Proje Yapısı
+components/: Uygulama genelinde kullanılan bileşenler.
+app/: Next.js sayfa bileşenleri.
+store/: Redux durumu ve dilimler.
+styles/: Uygulama genelinde kullanılan stil dosyaları.
+public/: Statik dosyalar (resimler, fontlar vb.).
+Katkıda Bulunma
+Bu proje özel bir repodur. Katkıda bulunmak isterseniz, lütfen projeyi forklayıp değişikliklerinizi pull request olarak gönderin.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Lisans
+Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+İletişim
+Herhangi bir soru veya öneriniz için benimle iletişime geçebilirsiniz.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+E-posta: mhmtakcn1999@hotmail.com
+Bu proje, frontend geliştirme becerilerini göstermek ve modern web teknolojilerini kullanarak etkileyici bir kullanıcı arayüzü oluşturmak amacıyla hazırlanmıştır.
