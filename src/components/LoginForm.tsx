@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { useGetUserLoginMutation } from "@/store/services/authService";
 import { useAuth } from "@/providers/AuthProvider";
+import { motion } from "framer-motion";
 
 const LoginForm = () => {
   const { t } = useTranslation();
@@ -38,7 +39,12 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="w-full max-w-lg p-8 space-y-8 bg-white rounded-lg">
+    <motion.div
+      className="w-full max-w-lg p-8 space-y-8 bg-white rounded-lg"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <h2 className="text-2xl font-bold text-center text-black">
         {t("LoginPage.login")}
       </h2>
@@ -106,7 +112,7 @@ const LoginForm = () => {
           {t("Error")} {error.toString()}
         </p>
       )}
-    </div>
+    </motion.div>
   );
 };
 

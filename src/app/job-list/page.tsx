@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
 import { useLazyGetJobsListQuery, useWithdrawJobMutation } from '@/store/services/apiService';
 import { useSelector } from 'react-redux';
@@ -7,9 +8,11 @@ import JobCard from './components/JobCard';
 import LoadingSpinner from '@/components/Loading';
 import AppliedList from './components/AppliedList';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 interface Job {
   id: string;
+  name:string;
   companyName: string;
   jobName: string;
   description: string;
@@ -43,13 +46,35 @@ const JobsList: React.FC = () => {
   if (isLoading) return <LoadingSpinner />;
   if (error) return <p>{t('Error loading jobs')}</p>;
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        when: "beforeChildren",
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div className="flex flex-col md:flex-row">
-      <div className="md:w-3/4 p-4">
+    <motion.div
+      className="flex flex-col md:flex-row"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div className="md:w-3/4 p-4" variants={itemVariants}>
         <div className="flex flex-col md:flex-row md:items-center md:justify-start mb-4 gap-8">
-        
           <div className="flex flex-col md:flex-row md:space-x-2">
-            <p className='text-center flex justify-center items-center me-4'>{t('Basic Filter')}</p>
+            <p className="text-center flex justify-center items-center me-4">{t('Basic Filter')}</p>
             <select
               className="border px-4 py-2 rounded mb-2 md:mb-0"
               value={searchField}
@@ -70,28 +95,30 @@ const JobsList: React.FC = () => {
           </div>
         </div>
         {data?.data?.map((job: Job) => (
-          <JobCard key={job.id} job={job} withdrawJob={withdrawJob} />
+          <motion.div key={job.id} variants={itemVariants}>
+            <JobCard job={job} withdrawJob={withdrawJob} />
+          </motion.div>
         ))}
         <div className="flex items-center justify-center gap-4 mt-4">
           <button
-            onClick={() => setPage(page => Math.max(page - 1, 1))}
+            onClick={() => setPage((page) => Math.max(page - 1, 1))}
             className="bg-black text-white px-4 py-2 rounded"
           >
             {t('Previous')}
           </button>
           <div>{page}/{Math.ceil(data?.meta?.total / perPage)}</div>
           <button
-            onClick={() => setPage(page => page + 1)}
+            onClick={() => setPage((page) => page + 1)}
             className="bg-black text-white px-6 py-2 rounded"
           >
             {t('Next')}
           </button>
         </div>
-      </div>
-      <div className="md:w-1/4 p-4 border-t md:border-t-0 md:border-l">
+      </motion.div>
+      <motion.div className="md:w-1/4 p-4 border-t md:border-t-0 md:border-l" variants={itemVariants}>
         <AppliedList />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

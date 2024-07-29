@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRegisterUserMutation } from '@/store/services/authService';
+import { motion } from 'framer-motion';
 
 const RegisterForm = () => {
   const { t } = useTranslation();
@@ -36,7 +37,12 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg">
+    <motion.div
+      className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <h2 className="text-2xl font-bold text-center text-black">
         {t('RegisterPage.register')}
       </h2>
@@ -103,7 +109,7 @@ const RegisterForm = () => {
       </form>
       {isLoading && <p className="mt-4 text-center text-black">{t('Loading')}</p>}
       {error && <p className="mt-4 text-center text-red-500">{t('Error')} {error.toString()}</p>}
-    </div>
+    </motion.div>
   );
 };
 

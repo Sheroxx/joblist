@@ -10,7 +10,6 @@ import { RootState } from "@/store/store";
 import { clearUser, setUser } from "@/store/userSlice";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-import { useFetchUserProfileQuery } from "@/store/services/authService";
 
 const customStyles = {
   content: {

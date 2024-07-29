@@ -7,7 +7,7 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-white p-8 shadow-inner">
+    <footer className="bg-white p-8  container mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto items-start lg:items-end">
         <div className="md:flex space-around md:items-start items-center gap-5">
           <h2 className="text-4xl font-bold sm:text-left text-center text-black">

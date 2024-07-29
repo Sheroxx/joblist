@@ -15,8 +15,8 @@ export const AuthProvider = ({ children }: any) => {
   });
 
   const login = (token: string, userData: any) => {
-    localStorage.setItem("accessToken", token);
-    localStorage.setItem("refreshToken", userData.refreshToken);
+    localStorage?.setItem("accessToken", token);
+    localStorage?.setItem("refreshToken", userData?.refreshToken);
     dispatch(setUser(userData));
   };
 

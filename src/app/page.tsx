@@ -26,7 +26,7 @@ const HomePage: React.FC = () => {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center min-h-screen bg-gray-100"
+      className="flex flex-col items-center justify-center min-h-screen "
       variants={containerVariants}
       initial="hidden"
       animate="visible"
