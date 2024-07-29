@@ -3,6 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser, clearUser } from "@/store/userSlice";
 import { useFetchUserProfileQuery } from "@/store/services/authService";
+import LoadingSpinner from "@/components/Loading";
 
 const AuthContext = createContext(null);
 
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }: any) => {
     dispatch(clearUser());
   };
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner/>;
   }
   return (
     <AuthContext.Provider value={{ token, login, logout, isLoading } as any}>

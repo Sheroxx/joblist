@@ -64,9 +64,11 @@ const Header = () => {
   console.log("USER ACCESS", accessToken);
 
   return (
-    <header className="flex items-center justify-between p-4 bg-white shadow-md">
+    <header className="flex items-center justify-between py-4 bg-white  container mx-auto">
       <div className="flex items-center">
-        <div className="text-4xl font-bold text-black">ACME</div>
+        <Link href={"/"}>
+          <div className="text-4xl font-bold text-black">ACME</div>
+        </Link>
         <div className="flex lg:hidden ml-4 space-x-2">
           <button
             onClick={() => changeLanguage("en")}
@@ -90,7 +92,7 @@ const Header = () => {
       <div className="hidden lg:flex items-center space-x-2">
         {accessToken ? (
           <>
-            <Link href={"/jobs"}>
+            <Link href={"/job-list"}>
               <button className="px-4 py-2 text-blue-500 hover:underline">
                 Job List
               </button>
@@ -156,7 +158,7 @@ const Header = () => {
         <div className="flex flex-col items-center mt-16 space-y-4">
           {user ? (
             <>
-              <Link href={"/jobs"}>
+              <Link href={"/job-list"}>
                 <button className="px-4 py-2 text-blue-500 hover:underline w-3/4">
                   Job List
                 </button>
