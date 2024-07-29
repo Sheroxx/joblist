@@ -31,7 +31,6 @@ const LoginForm = () => {
   const onSubmit = async (data: any) => {
     try {
       const response = await getUserLogin(data).unwrap();
-      console.log("USER LOGIN", response.user);
       login(response.accessToken, response);
     } catch (err) {
       console.error("Failed to login", err);

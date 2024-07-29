@@ -44,7 +44,6 @@ export const apiService = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log("Fetch jobs successful, data:", data);
         } catch (err) {
           console.error("Failed to fetch jobs", err);
         }
@@ -72,7 +71,6 @@ export const apiService = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log("Fetch job detail successful, data:", data);
         } catch (err) {
           console.error("Failed to fetch job detail", err);
         }
@@ -91,7 +89,6 @@ export const apiService = createApi({
           const { companyName, location } = data;
 
           dispatch(addApplyJob({ id: arg, companyName, location }));
-          console.log("Apply job successful, data:", applyData);
         } catch (err) {
           console.error("Failed to apply job", err);
         }

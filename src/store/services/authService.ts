@@ -14,7 +14,6 @@ export const authService = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log("Login successful, data:", data);
           localStorage.setItem("accessToken", data.accessToken);
           localStorage.setItem("refreshToken", data.refreshToken);
           dispatch(setUser(data));
@@ -33,7 +32,6 @@ export const authService = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log("Register successful, data:", data);
           localStorage.setItem("accessToken", data.accessToken);
           localStorage.setItem("refreshToken", data.refreshToken);
           dispatch(setUser(data));
@@ -54,7 +52,6 @@ export const authService = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log("Fetch profile successful, data:", data);
           dispatch(setUser({ user: data, accessToken: arg }));
         } catch (err) {
           console.error("Failed to fetch profile", err);
