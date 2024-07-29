@@ -27,7 +27,6 @@ const customStyles = {
     maxHeight: "80vh",
     padding: "50px",
   },
-
 };
 
 const Header = () => {
@@ -57,9 +56,11 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(clearUser());
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    window.location.href = "/";
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      window.location.href = "/";
+    }
   };
 
   return (

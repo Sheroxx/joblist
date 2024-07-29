@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/store";
@@ -34,7 +34,9 @@ const AppliedList: React.FC = () => {
   const token = useSelector((state: RootState) => state.user.accessToken) as string;
 
   useEffect(() => {
-    getDatas();
+    if (user?.appliedJobs) {
+      getDatas();
+    }
   }, [user?.appliedJobs]);
 
   const getDatas = async () => {
@@ -77,7 +79,9 @@ const AppliedList: React.FC = () => {
   return (
     <>
       <div className="text-center mb-4">
-        <Image src={user?.profileImage} alt="Profile" className="rounded-full w-20 h-20 mx-auto" width={100} height={100}/>
+        {typeof window !== "undefined" && user?.profileImage && (
+          <Image src={user?.profileImage} alt="Profile" className="rounded-full w-20 h-20 mx-auto" width={100} height={100} />
+        )}
         <div className="mt-2">{user?.email}</div>
       </div>
       <div className="text-lg font-bold mb-4 text-center">{t("Applied Jobs")}</div>
