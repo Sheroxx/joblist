@@ -6,6 +6,7 @@ import LoadingSpinner from "@/components/Loading";
 import { FaCheckCircle } from "react-icons/fa";
 import axios from "axios";
 import { setApplyJobs } from "@/store/userSlice";
+import { useTranslation } from "react-i18next";
 
 interface Job {
   id: string;
@@ -18,6 +19,7 @@ interface Job {
 }
 
 const AppliedList: React.FC = () => {
+  const { t } = useTranslation();
   const [withdrawJob] = useWithdrawJobMutation();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -64,7 +66,7 @@ const AppliedList: React.FC = () => {
         />
         <div className="mt-2">{user?.email}</div>
       </div>
-      <div className="text-lg font-bold mb-4 text-center">Applied Jobs</div>
+      <div className="text-lg font-bold mb-4 text-center">{t('Applied Jobs')}</div>
       <div className="space-y-6 max-h-[%70] overflow-y-auto">
         {loading && <LoadingSpinner />}
 
@@ -74,10 +76,10 @@ const AppliedList: React.FC = () => {
               {job.name}
             </h3>
             <p className="text-left mb-3">
-              <strong>Company Name:</strong> {job.companyName}
+              <strong>{t('Company Name')}:</strong> {job.companyName}
             </p>
             <p className="text-left mb-3">
-              <strong>Location:</strong> {job.location}
+              <strong>{t('Location')}:</strong> {job.location}
             </p>
           </div>
         ))}

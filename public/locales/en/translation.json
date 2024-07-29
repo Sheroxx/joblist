@@ -3,7 +3,9 @@
   "Error": "Error:",
   "header": {
     "loginBtn": "Login",
-    "registerBtn": "Sign Up"
+    "registerBtn": "Sign Up",
+    "jobList": "Job List",
+    "logout": "Logout"
   },
   "LoginPage": {
     "login": "Login",
@@ -17,7 +19,8 @@
   "Footer": {
     "title": "ACME",
     "getStarted": "Ready to get started?",
-    "privacyTerms": "© 2010 — 2024 Privacy — Terms"
+    "privacyTerms": "© 2010 — 2024 Privacy — Terms",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   "errors": {
     "usernameRequired": "Username is required",
@@ -33,5 +36,30 @@
     "password": "Password",
     "confirmPassword": "Confirm Password",
     "register": "Register"
-  }
+  },
+  "Basic Filter": "Basic Filter",
+  "Select a Field": "Select a Field",
+  "Job Name": "Job Name",
+  "Company Name": "Company Name",
+  "Location": "Location",
+  "Search": "Search",
+  "Previous": "Previous",
+  "Next": "Next",
+  "Detail": "Detail",
+  "Applied Jobs": "Applied Jobs",
+  "Congratulations!": "Congratulations!",
+  "You have successfully applied for the job.": "You have successfully applied for the job.",
+  "Apply Job": "Apply Job",
+  "Created At": "Created At",
+  "Keywords": "Keywords",
+  "Salary": "Salary",
+  "Job Description": "Job Description",
+  "Apply": "Apply",
+  "Close": "Close",
+  "Kaldırlıyor...": "Withdrawing",
+  "failed-job": "An error occurred while applying for a job.",
+  "success-job": "Job Application Successful.",
+  "success-withdraw" : "Job Application was successfully retrieved.",
+  "error-withdraw" : "An error occurred while retrieving the Job Application",
+  "WithDraw": "Başvuruyu Geri Al"
 }

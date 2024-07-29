@@ -27,6 +27,7 @@ const customStyles = {
     maxHeight: "80vh",
     padding: "50px",
   },
+
 };
 
 const Header = () => {
@@ -61,10 +62,8 @@ const Header = () => {
     window.location.href = "/";
   };
 
-  console.log("USER ACCESS", accessToken);
-
   return (
-    <header className="flex items-center justify-between py-4 bg-white  container mx-auto">
+    <header className="flex items-center justify-between py-4 bg-white container mx-auto">
       <div className="flex items-center">
         <Link href={"/"}>
           <div className="text-4xl font-bold text-black">ACME</div>
@@ -93,22 +92,22 @@ const Header = () => {
         {accessToken ? (
           <>
             <Link href={"/job-list"}>
-              <button className="px-4 py-2 text-blue-500 hover:underline">
-                Job List
+              <button className="px-4 py-2 font-bold text-black hover:underline">
+                {t("header.jobList")}
               </button>
             </Link>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 text-blue-500 hover:underline"
+              className="px-4 py-2 text-black hover:underline font-bold"
             >
-              Logout
+              {t("header.logout")}
             </button>
             <div className="flex items-center space-x-2">
               <span className="text-black">{user.email}</span>
               <img
                 src={user.profileImage}
                 alt="Profile"
-                className="w-8 h-8 rounded-full"
+                className="w-[50px] h-[50px] rounded-full"
               />
             </div>
           </>
@@ -160,14 +159,14 @@ const Header = () => {
             <>
               <Link href={"/job-list"}>
                 <button className="px-4 py-2 text-blue-500 hover:underline w-3/4">
-                  Job List
+                  {t("header.jobList")}
                 </button>
               </Link>
               <button
                 onClick={handleLogout}
                 className="px-4 py-2 text-blue-500 hover:underline w-3/4"
               >
-                Logout
+                {t("header.logout")}
               </button>
               <div className="flex items-center space-x-2 w-3/4 justify-center">
                 <span className="text-black">{user.email}</span>

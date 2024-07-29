@@ -5,6 +5,8 @@ import LoadingSpinner from "@/components/Loading";
 import ModalLoading from "@/components/ModalLoading";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 interface Job {
   id: string;
@@ -22,6 +24,7 @@ interface JobCardProps {
 }
 
 const JobCard: React.FC<JobCardProps> = ({ job, withdrawJob }) => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -44,9 +47,11 @@ const JobCard: React.FC<JobCardProps> = ({ job, withdrawJob }) => {
       setLoading(false);
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
+      toast.success(t('success-withdraw'));
     } catch (error) {
       console.error("Failed to withdraw job", error);
       setLoading(false);
+      toast.error(t('error-withdraw'));
     }
   };
 
@@ -64,11 +69,11 @@ const JobCard: React.FC<JobCardProps> = ({ job, withdrawJob }) => {
         <div className="text-sm text-gray-600">{job.description}</div>
         <div className="mt-2">
           <p className="block">
-            <span className="font-bold">Location: </span>
+            <span className="font-bold">{t('Location')}: </span>
             {job.location}
           </p>
           <p className="block">
-            <span className="font-bold">Salary:</span> {job.salary}$
+            <span className="font-bold">{t('Salary')}:</span> {job.salary}$
           </p>
         </div>
         <div className="mt-2 space-x-2">
@@ -85,13 +90,13 @@ const JobCard: React.FC<JobCardProps> = ({ job, withdrawJob }) => {
           onClick={openModal}
           className="bg-black text-white px-4 py-2 rounded"
         >
-          Detail
+          {t('Detail')}
         </button>
         {isApplied ? <button
           onClick={handleWithdraw}
           className="bg-red-500 text-white px-4 py-2 rounded"
         >
-          {loading ? <p>Kaldırlıyor...</p> : "Withdraw"}
+          {loading ? <p>{t('Kaldırlıyor...')}</p> : t('Withdraw')}
         </button> : null}
       </div>
       <JobDetailModal

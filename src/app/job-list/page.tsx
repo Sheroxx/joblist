@@ -6,6 +6,7 @@ import { RootState } from '@/store/store';
 import JobCard from './components/JobCard';
 import LoadingSpinner from '@/components/Loading';
 import AppliedList from './components/AppliedList';
+import { useTranslation } from 'react-i18next';
 
 interface Job {
   id: string;
@@ -24,6 +25,7 @@ interface User {
 }
 
 const JobsList: React.FC = () => {
+  const { t } = useTranslation();
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
   const [searchField, setSearchField] = useState('');
@@ -39,7 +41,7 @@ const JobsList: React.FC = () => {
   }, [page, perPage, searchField, searchQuery, orderByField, orderByDirection, getJobsList]);
 
   if (isLoading) return <LoadingSpinner />;
-  if (error) return <p>Error loading jobs</p>;
+  if (error) return <p>{t('Error loading jobs')}</p>;
 
   return (
     <div className="flex flex-col md:flex-row">
@@ -47,22 +49,21 @@ const JobsList: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center md:justify-start mb-4 gap-8">
         
           <div className="flex flex-col md:flex-row md:space-x-2">
-            <p className='text-center flex justify-center items-center me-4'>Basic Filter</p>
+            <p className='text-center flex justify-center items-center me-4'>{t('Basic Filter')}</p>
             <select
               className="border px-4 py-2 rounded mb-2 md:mb-0"
               value={searchField}
               onChange={(e) => setSearchField(e.target.value)}
             >
-              <option value="">Select a Field</option>
-              <option value="name">Job Name</option>
-              <option value="companyName">Company Name</option>
-              <option value="location">Location</option>
-              {/* <option value="salary">Salary</option> */}
+              <option value="">{t('Select a Field')}</option>
+              <option value="name">{t('Job Name')}</option>
+              <option value="companyName">{t('Company Name')}</option>
+              <option value="location">{t('Location')}</option>
             </select>
             <input
               type="text"
               className="border px-4 py-2 rounded"
-              placeholder="Search"
+              placeholder={t('Search')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -76,14 +77,14 @@ const JobsList: React.FC = () => {
             onClick={() => setPage(page => Math.max(page - 1, 1))}
             className="bg-black text-white px-4 py-2 rounded"
           >
-            Previous
+            {t('Previous')}
           </button>
           <div>{page}/{Math.ceil(data?.meta?.total / perPage)}</div>
           <button
             onClick={() => setPage(page => page + 1)}
             className="bg-black text-white px-6 py-2 rounded"
           >
-            Next
+            {t('Next')}
           </button>
         </div>
       </div>

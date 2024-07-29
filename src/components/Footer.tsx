@@ -4,20 +4,21 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {
-  const { t } = useTranslation("");
+  const { t } = useTranslation();
 
   return (
     <footer className="bg-white p-8 shadow-inner">
       <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto items-start lg:items-end">
         <div className="md:flex space-around md:items-start items-center gap-5">
-          <h2 className="text-4xl font-bold sm:text-left text-center text-black">{t("Footer.title")}</h2>
+          <h2 className="text-4xl font-bold sm:text-left text-center text-black">
+            {t("Footer.title")}
+          </h2>
           <div>
-            <p className="font-semibold text-black sm:text-left text-center">{t("Footer.getStarted")}</p>
+            <p className="font-semibold text-black sm:text-left text-center">
+              {t("Footer.getStarted")}
+            </p>
             <p className="text-gray-700 max-w-md sm:text-left text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              {t("Footer.description")}
             </p>
           </div>
         </div>

@@ -10,7 +10,7 @@ import { useAuth } from "@/providers/AuthProvider";
 
 const LoginForm = () => {
   const { t } = useTranslation();
-  const { login }:any= useAuth();
+  const { login }: any = useAuth();
 
   const schema = yup.object().shape({
     email: yup.string().required(t("errors.usernameRequired")),
@@ -30,7 +30,7 @@ const LoginForm = () => {
   const onSubmit = async (data: any) => {
     try {
       const response = await getUserLogin(data).unwrap();
-      console.log('USER LOGIN', response.user);
+      console.log("USER LOGIN", response.user);
       login(response.accessToken, response);
     } catch (err) {
       console.error("Failed to login", err);

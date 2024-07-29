@@ -3,7 +3,9 @@
   "Error": "Hata:",
   "header": {
     "loginBtn": "Giriş Yap",
-    "registerBtn": "Kayıt Ol"
+    "registerBtn": "Kayıt Ol",
+    "jobList": "İş Listesi",
+    "logout": "Çıkış Yap"
   },
   "LoginPage": {
     "login": "Giriş Yap",
@@ -17,7 +19,8 @@
   "Footer": {
     "title": "ACME",
     "getStarted": "Başlamak için hazır mısınız?",
-    "privacyTerms": "© 2010 — 2024 Gizlilik — Şartlar"
+    "privacyTerms": "© 2010 — 2024 Gizlilik — Şartlar",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   "errors": {
     "usernameRequired": "Kullanıcı adı gereklidir",
@@ -33,5 +36,30 @@
     "password": "Şifre",
     "confirmPassword": "Şifreyi Onayla",
     "register": "Kayıt Ol"
-  }
+  },
+  "Basic Filter": "Temel Filtre",
+  "Select a Field": "Bir Alan Seçin",
+  "Job Name": "İş Adı",
+  "Company Name": "Şirket Adı",
+  "Location": "Konum",
+  "Search": "Arama",
+  "Previous": "Önceki",
+  "Next": "Sonraki",
+  "Detail": "Detay",
+  "Applied Jobs": "Başvurulan İşler",
+  "Congratulations!": "Tebrikler!",
+  "You have successfully applied for the job.": "İşe başarıyla başvurdunuz.",
+  "Apply Job": "İşe Başvur",
+  "Created At": "Oluşturulma Tarihi",
+  "Keywords": "Anahtar Kelimeler",
+  "Salary": "Maaş",
+  "Job Description": "İş Tanımı",
+  "Apply": "Başvur",
+  "Close": "Kapat",
+  "Kaldırlıyor...": "Kaldırılıyor...",
+  "failed-job": "İş başvurusu yaparken hata oluştu!",
+  "success-job": "İş başvurusu Başarılı!",
+  "success-withdraw" : "İş başvurusu başarıyla geri alındı!",
+  "error-withdraw" : "İş başvurusu geri alınırken bir hata oluştu!"
+  
 }
