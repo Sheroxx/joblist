@@ -1,6 +1,4 @@
-# Shft Frontend Ödevi
 
-Bu proje, Shft yazılım şirketi tarafından verilen bir frontend ödevidir. Bu projede, modern web teknolojilerini kullanarak kullanıcı dostu bir arayüz geliştirilmiştir.
 
 ## Proje Hakkında
 
